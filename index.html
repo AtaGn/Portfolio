@@ -1,0 +1,1019 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ata Güneş - AI & Embedded Systems Engineer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8f9fa;
+            --bg-card: #ffffff;
+            --text-primary: #2c3e50;
+            --text-secondary: #555555;
+            --text-light: #777777;
+            --accent-primary: #667eea;
+            --accent-secondary: #764ba2;
+            --border-color: #e0e0e0;
+            --shadow: 0 3px 10px rgba(0,0,0,0.1);
+            --shadow-hover: 0 5px 20px rgba(0,0,0,0.15);
+            --nav-bg: #f8f9fa;
+            --code-bg: #f5f5f5;
+            --tech-bg: #e3f2fd;
+            --tech-color: #1976d2;
+        }
+
+        [data-theme="dark"] {
+            --bg-primary: #1a1a2e;
+            --bg-secondary: #16213e;
+            --bg-card: #0f3460;
+            --text-primary: #e8e8e8;
+            --text-secondary: #b0b0b0;
+            --text-light: #999999;
+            --accent-primary: #8b9dc3;
+            --accent-secondary: #a084ca;
+            --border-color: #2c3e50;
+            --shadow: 0 3px 10px rgba(0,0,0,0.3);
+            --shadow-hover: 0 5px 20px rgba(0,0,0,0.5);
+            --nav-bg: #16213e;
+            --code-bg: #2c3e50;
+            --tech-bg: #2c3e50;
+            --tech-color: #8b9dc3;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: var(--bg-primary);
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            min-height: 100vh;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
+            color: white;
+            padding: 60px 40px;
+            text-align: center;
+            position: relative;
+        }
+
+        .theme-toggle {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid white;
+            border-radius: 50px;
+            width: 60px;
+            height: 32px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            padding: 4px;
+            transition: all 0.3s;
+        }
+
+        .theme-toggle:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .theme-toggle-slider {
+            width: 24px;
+            height: 24px;
+            background: white;
+            border-radius: 50%;
+            transition: transform 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+        }
+
+        [data-theme="dark"] .theme-toggle-slider {
+            transform: translateX(28px);
+        }
+
+        header h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            animation: fadeInUp 0.8s ease;
+        }
+
+        header .tagline {
+            font-size: 1.3em;
+            opacity: 0.95;
+            margin-bottom: 20px;
+            animation: fadeInUp 0.8s ease 0.2s backwards;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            animation: fadeInUp 0.8s ease 0.4s backwards;
+        }
+
+        .contact-links a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 2px solid white;
+            border-radius: 30px;
+            transition: all 0.3s;
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .contact-links a:hover {
+            background: white;
+            color: var(--accent-primary);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        nav {
+            background: var(--nav-bg);
+            padding: 15px 40px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: var(--shadow);
+            transition: background 0.3s ease;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        nav a:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-primary);
+            transition: width 0.3s;
+        }
+
+        nav a:hover:after {
+            width: 100%;
+        }
+
+        section {
+            padding: 60px 40px;
+            background: var(--bg-primary);
+            transition: background 0.3s ease;
+        }
+
+        section:nth-child(even) {
+            background: var(--bg-secondary);
+        }
+
+        h2 {
+            color: var(--accent-primary);
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            position: relative;
+            padding-bottom: 15px;
+            animation: fadeInUp 0.6s ease;
+        }
+
+        h2:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+            border-radius: 2px;
+        }
+
+        .about-content {
+            font-size: 1.1em;
+            line-height: 1.8;
+            color: var(--text-secondary);
+            animation: fadeIn 0.8s ease;
+            white-space: pre-line;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .skill-category {
+            background: var(--bg-card);
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            transition: all 0.3s;
+            border: 1px solid var(--border-color);
+            animation: fadeInUp 0.6s ease;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .skill-category h3 {
+            color: var(--accent-secondary);
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .skill-tag {
+            background: var(--tech-bg);
+            color: var(--tech-color);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            transition: all 0.3s;
+        }
+
+        .skill-tag:hover {
+            transform: scale(1.05);
+        }
+
+        .projects-container {
+            margin-top: 30px;
+        }
+
+        .project-item {
+            background: var(--bg-card);
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 25px;
+            box-shadow: var(--shadow);
+            transition: all 0.3s;
+            border-left: 4px solid var(--accent-primary);
+            animation: fadeInUp 0.6s ease;
+        }
+
+        .project-item:hover {
+            transform: translateX(5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .project-header h3 {
+            color: var(--accent-primary);
+            font-size: 1.5em;
+            margin-bottom: 5px;
+        }
+
+        .project-date {
+            color: var(--text-light);
+            font-size: 0.95em;
+            background: var(--bg-secondary);
+            padding: 4px 12px;
+            border-radius: 15px;
+        }
+
+        .project-description {
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 20px;
+            white-space: pre-line;
+        }
+
+        .project-skills {
+            color: var(--text-secondary);
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+
+        .project-features {
+            color: var(--text-secondary);
+            margin-bottom: 15px;
+        }
+
+        .project-features ul {
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+
+        .project-features li {
+            margin-bottom: 8px;
+            line-height: 1.6;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 15px;
+        }
+
+        .project-links a {
+            color: var(--accent-primary);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 6px 14px;
+            border: 1px solid var(--accent-primary);
+            border-radius: 20px;
+            transition: all 0.3s;
+            font-size: 0.9em;
+        }
+
+        .project-links a:hover {
+            background: var(--accent-primary);
+            color: white;
+        }
+
+        .experience-item, .education-item {
+            background: var(--bg-card);
+            padding: 25px;
+            margin-bottom: 20px;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            border-left: 4px solid var(--accent-primary);
+            transition: all 0.3s;
+            animation: fadeInUp 0.6s ease;
+        }
+
+        .experience-item:hover, .education-item:hover {
+            transform: translateX(5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .experience-header h3 {
+            color: var(--text-primary);
+            font-size: 1.3em;
+        }
+
+        .company {
+            color: var(--accent-primary);
+            font-weight: 600;
+        }
+
+        .date {
+            color: var(--text-light);
+            font-size: 0.9em;
+            background: var(--bg-secondary);
+            padding: 4px 12px;
+            border-radius: 15px;
+        }
+
+        ul {
+            margin-left: 20px;
+            color: var(--text-secondary);
+        }
+
+        ul li {
+            margin-bottom: 8px;
+        }
+
+        footer {
+            background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
+            color: white;
+            text-align: center;
+            padding: 40px;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2em;
+            }
+            
+            section {
+                padding: 40px 20px;
+            }
+            
+            h2 {
+                font-size: 1.8em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                <div class="theme-toggle-slider">
+                    <span id="themeIcon">🌙</span>
+                </div>
+            </button>
+            <h1>Ata Güneş</h1>
+            <p class="tagline">Electrical and Electronics Engineer | AI & Machine Learning Specialist</p>
+            <div class="contact-links">
+                <a href="mailto:ata_gn@hotmail.com">📧 ata_gn@hotmail.com</a>
+                <a href="https://github.com/AtaGn" target="_blank">💻 GitHub</a>
+                <a href="https://www.linkedin.com/in/atagüneş/" target="_blank">🔗 LinkedIn</a>
+                <a href="tel:+905357171007">📱 +90 535 717 1007</a>
+            </div>
+        </header>
+
+        <nav>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#projects">Projects</a></li>
+            </ul>
+        </nav>
+
+        <section id="about">
+            <h2>About Myself</h2>
+            <div class="about-content">I am Electrical and Electronics Engineering graduate with a strong focus on Embedded Systems, Machine Learning, and Data Science. Throughout my academic and project experience, I have developed AI-powered solutions for computer vision, signal processing, and industrial IoT applications using platforms such as NVIDIA Jetson Nano, STM32, and Arduino. Skilled in Python, C/C++, MATLAB, and deep learning frameworks including TensorFlow, PyTorch, and scikit-learn, I have hands-on expertise in data preprocessing, feature engineering, model training, and real-time inference. I have contributed to TÜBİTAK-funded research projects, developed medical imaging AI systems, and implemented industrial automation solutions integrating sensor data with machine learning models.</div>
+        </section>
+
+        <section id="skills">
+            <h2>Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Programming Languages</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">MATLAB</span>
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">C++/C#/C</span>
+                        <span class="skill-tag">Flutter</span>
+                        <span class="skill-tag">Unity - amateur</span>
+                        <span class="skill-tag">SQL</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Embedded Systems</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Nvidia Jetson Nano</span>
+                        <span class="skill-tag">Arduino</span>
+                        <span class="skill-tag">STM32</span>
+                        <span class="skill-tag">ONNX</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Familiar Software</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Microsoft Office</span>
+                        <span class="skill-tag">Proteus Design Suite</span>
+                        <span class="skill-tag">Jupyter</span>
+                        <span class="skill-tag">Spyder</span>
+                        <span class="skill-tag">Google Colab</span>
+                        <span class="skill-tag">Git</span>
+                        <span class="skill-tag">GitHub</span>
+                        <span class="skill-tag">Siemens Tia Portal</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Machine Learning & Data Science</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Scikit-Learn</span>
+                        <span class="skill-tag">Transformer Learning</span>
+                        <span class="skill-tag">Deep Learning</span>
+                        <span class="skill-tag">Regression</span>
+                        <span class="skill-tag">Clustering</span>
+                        <span class="skill-tag">TensorFlow, Keras, PyTorch</span>
+                        <span class="skill-tag">Neural Networks</span>
+                        <span class="skill-tag">Classification</span>
+                        <span class="skill-tag">Pandas</span>
+                        <span class="skill-tag">Numpy</span>
+                        <span class="skill-tag">Generative AI</span>
+                        <span class="skill-tag">LSTM, GRU, RNN, DNN</span>
+                        <span class="skill-tag">Matplotlib</span>
+                        <span class="skill-tag">Seaborn</span>
+                        <span class="skill-tag">Time Series Analysis</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Other Skills</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Decision-making</span>
+                        <span class="skill-tag">Team-work oriented</span>
+                        <span class="skill-tag">Organizational skills</span>
+                        <span class="skill-tag">LinkedIn</span>
+                        <span class="skill-tag">Google Drive</span>
+                        <span class="skill-tag">Microsoft Apps</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="experience">
+            <h2>Work Experience</h2>
+            
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div>
+                        <h3>INTERN</h3>
+                        <p class="company">TÜBİTAK BİLGEM - BTE UNIT, B3LAB – KOCAELI, TURKEY</p>
+                    </div>
+                    <span class="date">02/09/2024 – 27/09/2024</span>
+                </div>
+                <ul>
+                    <li>Actively participated in real, ongoing projects focusing on artificial intelligence development and data science.</li>
+                    <li>Worked on data processing, model training, and performance evaluation in the field of data science.</li>
+                    <li>Gained hands-on experience in embedded machine learning applications.</li>
+                    <li>Conducted data analysis and visualization using Python.</li>
+                    <li>Engaged in dataset preparation, feature engineering, and other data-related tasks.</li>
+                </ul>
+                <p style="margin-top: 15px; color: var(--text-secondary);">
+                    <strong>Reference:</strong><br>
+                    Fatma Canan Pembe Muhtaroglu<br>
+                    Senior Chief Expert Researcher<br>
+                    Email: canan.pembe@tubitak.gov.tr<br>
+                    Phone: 0 535 943 63 95
+                </p>
+            </div>
+
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div>
+                        <h3>PROJECT SCHOLARSHIP HOLDER – COMPUTER VISION & MACHINE LEARNING</h3>
+                        <p class="company">– İZMIR, TURKEY</p>
+                    </div>
+                    <span class="date">15/03/2025 – 07/2025</span>
+                </div>
+                <p style="margin-bottom: 15px; color: var(--text-secondary);">
+                    Contributed to the TÜBİTAK-1001 funded CHABA project titled "Video Regression-Based Total Hemoglobin Estimation
+                    and Device Design for Earthquake Zone Applications."
+                </p>
+                <ul>
+                    <li>Focused on computer vision and machine learning methods to estimate hemoglobin levels from facial videos.</li>
+                    <li>Worked on preprocessing of video data, facial region detection, feature extraction, and training of regression models.</li>
+                    <li>Supported the development of portable health-monitoring solutions suitable for disaster-stricken areas.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="education">
+            <h2>Education and Training</h2>
+            
+            <div class="education-item">
+                <div class="experience-header">
+                    <div>
+                        <h3>ELECTRIC AND ELECTRONIC ENGINEERING (ENGLISH)</h3>
+                        <p class="company">Izmir Democracy University Faculty of Engineering</p>
+                    </div>
+                    <span class="date">06/09/2021 – 07/2025</span>
+                </div>
+                <ul>
+                    <li>Embedded systems</li>
+                    <li>C/C++</li>
+                    <li>Python</li>
+                    <li>Data Science</li>
+                    <li>Neural Network and Deep Learning</li>
+                    <li>Machine Learning</li>
+                </ul>
+                <p style="margin-top: 10px;"><strong>Final grade:</strong> 3.01</p>
+            </div>
+
+            <div class="education-item">
+                <div class="experience-header">
+                    <div>
+                        <h3>ARTIFICIAL INTELLIGENCE SPECIALIZATION PROGRAM (YAPAY ZEKA UZMANLIK PROGRAMI)</h3>
+                        <p class="company">T.C. Sanayi ve Teknoloji Bakanlığı | Republic Of Türkiye Ministry of Industry and Technology</p>
+                    </div>
+                    <span class="date">01/2024 – 08/2024</span>
+                </div>
+                <p style="color: var(--text-secondary); margin-bottom: 15px;">
+                    I am happy to share that I am one of the first 500 people to qualify to participate in the Artificial Intelligence
+                    Specialization Program organized by the T.C. Sanayi ve Teknoloji Bakanlığı | Republic Of Türkiye Ministry of
+                    Industry and Technology! Within the scope of this special program, I gain knowledge and experience from leading
+                    companies such as Huawei, Arçelik Global, Baykar Technologies, Cezeri Yapay Zeka Robotik Teknolojileri,
+                    TÜBİTAK BİLGEM, HAVELSAN.
+                </p>
+                <ul>
+                    <li>Fundamentals of Artificial Intelligence and Machine Learning</li>
+                    <li>Supervised and Unsupervised Learning Techniques</li>
+                    <li>Deep Learning Architectures (CNNs, RNNs, LSTMs)</li>
+                    <li>Data Preprocessing, Feature Engineering, and Data Augmentation</li>
+                    <li>Model Evaluation and Performance Metrics</li>
+                    <li>Natural Language Processing (NLP) Techniques</li>
+                    <li>Computer Vision Applications</li>
+                    <li>Python Programming for AI and Data Science</li>
+                    <li>Implementation of Machine Learning Algorithms in Real-world Scenarios</li>
+                    <li>Introduction to Embedded Machine Learning</li>
+                    <li>Hands-on Projects and Case Studies in AI Development</li>
+                    <li>AI Model Deployment and Optimization</li>
+                </ul>
+                <p style="margin-top: 15px;">
+                    <strong>Link:</strong> <a href="https://drdogrulama.sanayi.gov.tr/tr/verify/63285319066405" target="_blank" style="color: var(--accent-primary);">https://drdogrulama.sanayi.gov.tr/tr/verify/63285319066405</a>
+                </p>
+            </div>
+
+            <div class="education-item">
+                <div class="experience-header">
+                    <div>
+                        <h3>GAME AND APPLICATION ACADEMY (UNITY BOOTCAMP WINNER)</h3>
+                    </div>
+                    <span class="date">04/12/2022 – 08/2023</span>
+                </div>
+                <p style="color: var(--text-secondary);">
+                    I am proud to have emerged as the winner of the Unity Bootcamp Competition, a prestigious event organized
+                    exclusively for scholarship students from across Turkey.
+                </p>
+            </div>
+
+            <div class="education-item">
+                <div class="experience-header">
+                    <div>
+                        <h3>HUAWEI CLOUD AI BOOTCAMP</h3>
+                        <p class="company">Huawei Cloud Türkiye</p>
+                    </div>
+                    <span class="date">2025</span>
+                </div>
+                <p style="margin-top: 10px;">
+                    <strong>Website:</strong> <a href="https://www.linkedin.com/in/atagüneş/overlay/1758638242205/single-media-viewer/?profileId=ACoAADitQd8BbfQBJD6d1WlF-dvk4ZrVA7rUYn0" target="_blank" style="color: var(--accent-primary);">View Certificate</a>
+                </p>
+            </div>
+        </section>
+
+        <section id="projects">
+            <h2>Projects</h2>
+            <div class="projects-container">
+                
+                <div class="project-item">
+                    <div class="project-header">
+                        <h3>Non-Invasive Hemoglobin Estimation Using Deep Learning and Computer Vision</h3>
+                        <span class="project-date">06/2025</span>
+                    </div>
+                    <div class="project-description">Authored a research paper on a novel method for estimating hemoglobin levels from facial videos, supported by the Scientific and Technological Research Council of Türkiye (TÜBİTAK).</div>
+                    <div class="project-skills"><strong>Skills Demonstrated:</strong></div>
+                    <div class="project-features">
+                        <ul>
+                            <li><strong>Machine Learning:</strong> Developed and evaluated multiple regression models, including XGBoost, Random Forest, and Support Vector Regression (SVR). Implemented advanced ensemble methods, creating a Stacking Regressor to enhance predictive performance by combining diverse models.</li>
+                            <li><strong>Deep Learning & Computer Vision:</strong> Engineered a multi-modal feature extraction pipeline using Python and OpenCV. Extracted deep visual features via transfer learning with pre-trained CNNs (MobileNet V2, ResNet152).</li>
+                            <li><strong>Signal Processing:</strong> Processed video to extract physiological data using remote photoplethysmography (rPPG) techniques, including applying Butterworth band-pass filters to isolate cardiac pulse signals.</li>
+                            <li><strong>Data Science & Analysis:</strong> Performed comprehensive model validation using hyperparameter optimization (Grid Search & Bayes) with 5-fold cross-validation. Conducted feature importance analysis to confirm the significance of the multi-modal approach.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="project-item">
+                    <div class="project-header">
+                        <h3>AI-Powered Health Image Analysis Platform – Healthify</h3>
+                        <span class="project-date">04/2025 – 07/2025</span>
+                    </div>
+                    <div class="project-description">Designed and developed a full-stack AI-powered healthcare monitoring application that allows users to upload photos of body parts (skin, eye, nail, hair) and receive instant health feedback and recovery tracking based on AI analysis.</div>
+                    <div class="project-skills"><strong>Skills Demonstrated:</strong></div>
+                    <div class="project-features">
+                        <ul>
+                            <li><strong>Deep Learning Integration:</strong> Implemented advanced image classification models tailored for medical domains, providing instant feedback and re-analysis suggestions (e.g., "Re-upload in 3 days to track improvement").</li>
+                            <li><strong>AI Chatbot & NLP:</strong> Developed an AI health assistant chatbot capable of offering text-based medical advice and symptom discussion without requiring image upload.</li>
+                            <li><strong>User-Centered Design:</strong> Built a modern, responsive UI/UX with health news, onboarding guides, personalized dashboards, and visualized improvement graphs.</li>
+                            <li><strong>Full-Stack Development:</strong> Engineered secure login/register system (with Google auth), profile settings, AI-based result visualization, email notifications, and encrypted database storage.</li>
+                            <li><strong>Health Tracking Features:</strong> Enabled graphical comparison of past analysis, time-based tracking suggestions, and personalized AI recommendations to improve health engagement.</li>
+                        </ul>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/AtaGn/yzta-Healthify-bootcamp-2025" target="_blank">🔗 GitHub Repository</a>
+                    </div>
+                </div>
+
+                <div class="project-item">
+                    <div class="project-header">
+                        <h3>Diabetic Retinopathy Severity Classification using Vision Transformers</h3>
+                        <span class="project-date">06/2025</span>
+                    </div>
+                    <div class="project-description">Developed and benchmarked five deep learning models for classifying Diabetic Retinopathy severity, achieving 2nd place in a Kaggle competition with a final accuracy of 0.86075.</div>
+                    <div class="project-skills"><strong>Skills Demonstrated:</strong></div>
+                    <div class="project-features">
+                        <ul>
+                            <li><strong>Advanced Architectures:</strong> Implemented and fine-tuned Vision Transformer (ViT) and EfficientNet (B3/B4) models for medical image classification.</li>
+                            <li><strong>Multi-Task & Two-Stage Learning:</strong> Designed a cascaded two-stage pipeline to first perform binary classification (DR vs. No DR) and then multi-class severity grading. Utilized a three-headed model (classification, regression, ordinal) to capture complex data relationships.</li>
+                            <li><strong>Handling Class Imbalance:</strong> Employed Focal Loss and Weighted Cross-Entropy to effectively train models on highly imbalanced datasets, improving performance on underrepresented classes.</li>
+                            <li><strong>Image Preprocessing & Augmentation:</strong> Engineered a robust preprocessing pipeline using techniques like Contrast Limited Adaptive Histogram Equalization (CLAHE) and Ben Graham's sharpening method to enhance subtle pathological features in retinal fundus images.</li>
+                        </ul>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/AtaGn/Diabetic-Retinopathy-Severity-Classification" target="_blank">🔗 GitHub</a>
+                        <a href="https://www.kaggle.com/competitions/diabetic-retinopathy-classification-3/leaderboard" target="_blank">🏆 Kaggle Leaderboard</a>
+                        <a href="https://github.com/AtaGn/Diabetic-Retinopathy-Severity-Classification/blob/main/Multi-Task ViT and CNN Architectures for Diabetic Retinopathy Severity Classification.pdf" target="_blank">📄 Paper</a>
+                    </div>
+                </div>
+
+                <div class="project-item">
+                    <div class="project-header">
+                        <h3>Real-Time Data Analysis in Industrial Coffee Roasting Processes using NVIDIA Jetson Nano</h3>
+                        <span class="project-date">2024</span>
+                    </div>
+                    <div class="project-description"><strong>Researcher – TÜBİTAK 2209-A Project</strong></div>
+                    <div class="project-features">
+                        <ul>
+                            <li>Developed an embedded system on NVIDIA Jetson Nano to collect temperature sensor data and acoustic signals (coffee cracking sounds) from industrial coffee roasting machines.</li>
+                            <li>Performed data preprocessing, time-series analysis, and acoustic feature extraction using Python, NumPy, Pandas, Librosa, and OpenCV libraries.</li>
+                            <li>Built and evaluated machine learning models (e.g., Random Forest, XGBoost, SVM) to predict roast levels based on temperature profiles and acoustic signal patterns.</li>
+                            <li>Implemented sensor integration, model training, hyperparameter optimization, and performance evaluation metrics (Accuracy, F1-score).</li>
+                            <li>Deployed real-time data acquisition and on-device inference pipelines for industrial automation purposes.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="project-item">
+                    <div class="project-header">
+                        <h3>Fashion-Clothing Classification and Visual Recommendation System (Computer Vision & Machine Learning)</h3>
+                        <span class="project-date">01/2024</span>
+                    </div>
+                    <div class="project-description">Developed a comprehensive computer vision system in Python to classify clothing items from images and provide visually similar recommendations.</div>
+                    <div class="project-skills"><strong>Skills Demonstrated:</strong></div>
+                    <div class="project-features">
+                        <ul>
+                            <li><strong>Classical & Deep Learning Models:</strong> Implemented and compared various classification algorithms, including Support Vector Machines (SVM), k-Nearest Neighbors (k-NN), and Convolutional Neural Networks (CNNs) using scikit-learn and TensorFlow.</li>
+                            <li><strong>Feature Extraction & Transfer Learning:</strong> Utilized a pre-trained ResNet model to extract deep semantic features from images for similarity-based tasks.</li>
+                            <li><strong>Recommendation Systems:</strong> Built a content-based recommendation engine by calculating Euclidean distance between image embeddings to find visually similar items.</li>
+                            <li><strong>Image Processing:</strong> Applied a full preprocessing pipeline with OpenCV, including resizing, normalization, and data augmentation to standardize and enrich the image dataset.</li>
+                        </ul>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/AtaGn/Faction-Clothing-Machine-Learning-Project" target="_blank">🔗 GitHub Repository</a>
+                    </div>
+                </div>
+
+                <div class="project-item">
+                    <div class="project-header">
+                        <h3>Encryption-Supported Vehicle Keyless Entry System</h3>
+                        <span class="project-date">06/2025</span>
+                    </div>
+                    <div class="project-skills"><strong>Skills Demonstrated:</strong></div>
+                    <div class="project-features">
+                        <ul>
+                            <li><strong>Embedded Security:</strong> Engineered a secure communication protocol on Arduino microcontrollers, implementing AES encryption and Hopping Code algorithms to prevent vulnerabilities like replay attacks.</li>
+                            <li><strong>Hardware Design & Prototyping:</strong> Managed the full hardware lifecycle from concept to physical prototype, including circuit design in Fritzing, custom 3D enclosure modeling (Tinkercad), and component integration.</li>
+                            <li><strong>Wireless Systems Integration:</strong> Developed and implemented two distinct keyless systems: one using Bluetooth Low Energy (BLE) with a custom Android app, and a hybrid system combining 433 MHz RF with RFID for proximity-based authorization.</li>
+                        </ul>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/AtaGn/Keyless-Entry-Systems" target="_blank">🔗 GitHub Repository</a>
+                    </div>
+                </div>
+
+                <div class="project-item">
+                    <div class="project-header">
+                        <h3>Image Classification of Fashion Items using CNN and PyTorch</h3>
+                        <span class="project-date">05/05/2023 – 15/05/2023</span>
+                    </div>
+                    <div class="project-description">This project focuses on developing a convolutional neural network (CNN) using PyTorch to classify images of 10 different apparel categories (e.g., t-shirts, trousers, coats, sandals). The model is trained on a labeled image dataset, with preprocessing techniques including normalization and data augmentation. The CNN architecture was designed and fine-tuned to achieve high classification accuracy. Model performance was evaluated using metrics such as accuracy and confusion matrix.</div>
+                    <div class="project-skills"><strong>Features:</strong></div>
+                    <div class="project-features">
+                        <ul>
+                            <li>Deep Learning with PyTorch: Implemented a custom CNN architecture from scratch.</li>
+                            <li>Multi-Class Classification: Trained to distinguish between 10 categories of fashion items.</li>
+                            <li>Data Handling: Utilized PyTorch's DataLoader and Dataset classes for efficient training.</li>
+                            <li>Evaluation Metrics: Measured accuracy and visualized predictions using confusion matrix and sample outputs.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="project-item">
+                    <div class="project-header">
+                        <h3>LinkedIn Job Postings Analysis Project</h3>
+                        <span class="project-date">06/2024</span>
+                    </div>
+                    <div class="project-description"><strong>Description:</strong>
+Conducted a comprehensive analysis of over 124,000 job postings on LinkedIn from 2023 and 2024. The project involved exploring various aspects of job listings, company information, and employment dynamics to provide insights into the labor market trends and patterns.</div>
+                    <div class="project-skills"><strong>Tools and Methods Used:</strong></div>
+                    <div class="project-features">
+                        <ul>
+                            <li>Programming Language: Python</li>
+                            <li>Data Analysis and Manipulation: Pandas, NumPy</li>
+                            <li>Data Visualization: Matplotlib, Seaborn</li>
+                            <li>Machine Learning: Scikit-learn</li>
+                            <li>Natural Language Processing (NLP): NLTK, SpaCy</li>
+                            <li>Data Sources: Job postings dataset from LinkedIn</li>
+                            <li>Modeling and Prediction: Regression analysis, Clustering analysis</li>
+                            <li>Data Cleaning and Preparation: Handling missing data, data normalization and standardization</li>
+                            <li>Project Management and Documentation: Jupyter Notebook, Google Colab</li>
+                        </ul>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/AtaGn/MTA-YZUP-LinkedIn-Job-Postings-Project" target="_blank">🔗 GitHub Repository</a>
+                    </div>
+                </div>
+
+                <div class="project-item">
+                    <div class="project-header">
+                        <h3>Breast Cancer Diagnosis with Machine Learning</h3>
+                        <span class="project-date">02/2024</span>
+                    </div>
+                    <div class="project-description">This project is an interactive web application built with Streamlit, designed to diagnose breast cancer using various machine learning models. It utilizes the Python libraries pandas for data manipulation, seaborn and matplotlib for data visualization, and scikit-learn for machine learning. The application guides the user through several steps: data loading, preprocessing, model selection, training, and analysis.</div>
+                    <div class="project-skills"><strong>Features:</strong></div>
+                    <div class="project-features">
+                        <ul>
+                            <li>Interactive Web UI: Built using Streamlit, allowing for easy navigation and operation.</li>
+                            <li>Data Preprocessing: Cleans the dataset by removing unnecessary columns and encoding categorical data.</li>
+                            <li>Visualization: Generates correlation heatmaps and scatter plots to visualize the data.</li>
+                            <li>Model Selection: Offers a choice between KNN, SVM, and Naive Bayes classifiers.</li>
+                            <li>Model Training: Includes parameter tuning with GridSearchCV for KNN and SVM models.</li>
+                            <li>Model Analysis: Displays the model's accuracy, precision, recall, F1-score, and a confusion matrix to evaluate performance.</li>
+                        </ul>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/AtaGn/MTA_YZUP_Breast-_Cancer_Wisconsin_Diagnostic" target="_blank">🔗 GitHub Repository</a>
+                    </div>
+                </div>
+
+                <div class="project-item">
+                    <div class="project-header">
+                        <h3>Machine Learning Logistic Regression</h3>
+                        <span class="project-date">27/12/2022 – 12/01/2023</span>
+                    </div>
+                    <div class="project-description">We examined the success rates of students with alcohol problems in mathematics with logistic regression.</div>
+                    <div class="project-links">
+                        <a href="https://colab.research.google.com/drive/15oZgXBLPB4g3AAeevxvO9LqavH0ejVd3?authuser=1" target="_blank">🔗 Google Colab</a>
+                    </div>
+                </div>
+
+                <div class="project-item">
+                    <div class="project-header">
+                        <h3>Nonogram Game With Python</h3>
+                        <span class="project-date"></span>
+                    </div>
+                    <div class="project-description">I made the random map generating nonogram game from scratch, only with python.</div>
+                    <div class="project-links">
+                        <a href="https://github.com/AtaGn/Projects/tree/main/Nonogram_Project" target="_blank">🔗 GitHub Repository</a>
+                    </div>
+                </div>
+
+                <div class="project-item">
+                    <div class="project-header">
+                        <h3>Human Activity Recognition Simulink Model for Smartphone Deployment</h3>
+                        <span class="project-date">01/02/2022 – 25/02/2022</span>
+                    </div>
+                    <div class="project-description">This project shows how to prepare a Simulink model that classifies human activity based on smartphone sensor signals for code generation and smartphone deployment.</div>
+                </div>
+
+                <div class="project-item">
+                    <div class="project-header">
+                        <h3>GDSC Core Team Member</h3>
+                        <span class="project-date"></span>
+                    </div>
+                    <div class="project-description">I am a google developer student club core team member of my own school. You can view our events from the link.
+Example of one of them.
+I'm also in Hackathon organization team.
+I attended the event at Flutter Compose Camp as a teacher with other core team members.</div>
+                    <div class="project-links">
+                        <a href="https://gdsc.community.dev/izmir-democracy-university/" target="_blank">🔗 GDSC Community Page</a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <footer>
+            <p>&copy; 2025 Ata Güneş. All rights reserved.</p>
+            <p>İzmir, Turkey | Available for opportunities in AI, Machine Learning, and Embedded Systems</p>
+        </footer>
+    </div>
+
+    <script>
+        // Theme toggle functionality
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = document.getElementById('themeIcon');
+        const html = document.documentElement;
+
+        // Check for saved theme preference or default to light mode
+        const currentTheme = localStorage.getItem('theme') || 'light';
+        html.setAttribute('data-theme', currentTheme);
+        updateThemeIcon(currentTheme);
+
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            
+            html.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateThemeIcon(newTheme);
+        });
+
+        function updateThemeIcon(theme) {
+            themeIcon.textContent = theme === 'light' ? '🌙' : '☀️';
+        }
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                const navHeight = document.querySelector('nav').offsetHeight;
+                const targetPosition = target.offsetTop - navHeight;
+                
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Add animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationPlayState = 'running';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all animated elements
+        document.querySelectorAll('.skill-category, .project-item, .experience-item, .education-item').forEach(el => {
+            el.style.animationPlayState = 'paused';
+            observer.observe(el);
+        });
+
+        // Highlight active navigation link
+        window.addEventListener('scroll', () => {
+            let current = '';
+            const sections = document.querySelectorAll('section');
+            const navHeight = document.querySelector('nav').offsetHeight;
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - navHeight - 10;
+                if (scrollY >= sectionTop) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            document.querySelectorAll('nav a').forEach(link => {
+                link.style.color = '';
+                if (link.getAttribute('href') === '#' + current) {
+                    link.style.color = 'var(--accent-primary)';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
